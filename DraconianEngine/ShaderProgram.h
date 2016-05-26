@@ -11,12 +11,15 @@ class ShaderProgram {
 		~ShaderProgram();
 	
 		GLint initialize();	
+		inline void enable();
+		inline void disable();
 
 		inline GLuint getID() const;
 		inline GLuint getVertexID() const;
 		inline GLuint getFragmentID() const;
 		inline GLuint getGeometryID() const;
 		inline std::string infoLog() const;
+		inline GLint isValid() const;
 
 	private:
 		GLuint mID;
@@ -24,8 +27,17 @@ class ShaderProgram {
 		GLuint mFragmentID;
 		GLuint mGeometryID;
 		char mLog[512];
+		GLint mIsValid;
 
 };
+
+inline void ShaderProgram::enable() {
+	glUseProgram(mID);
+}
+
+inline void ShaderProgram::disable() {
+	glUseProgram(0);
+}
 
 inline GLuint ShaderProgram::getID() const {
 	return mID;
@@ -45,6 +57,10 @@ inline GLuint ShaderProgram::getGeometryID() const {
 
 inline std::string ShaderProgram::infoLog() const {
 	return mLog;
+}
+
+inline GLint ShaderProgram::isValid() const {
+	return mIsValid;
 }
 
 }
