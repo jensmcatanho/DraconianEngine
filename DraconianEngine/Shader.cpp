@@ -3,12 +3,13 @@
 namespace Draconian {
 
 Shader::Shader(const GLchar* p, GLenum t) :
-	mPath(p),
-	mType(t)
+	m_Path(p),
+	m_Type(t)
 {}
 
 Shader::~Shader() {
-	glDeleteShader(mID);
+	if (m_ID)
+		glDeleteShader(m_ID);
 
 }
 
@@ -20,7 +21,7 @@ void Shader::initialize() {
 	shaderFile.exceptions(std::ifstream::badbit);
 
 	try {
-		shaderFile.open(mPath);
+		shaderFile.open(m_Path);
 		shaderStream << shaderFile.rdbuf();
 		shaderFile.close();
 		shaderString = shaderStream.str();
@@ -30,11 +31,11 @@ void Shader::initialize() {
 
 	}
 
-	mCode = const_cast<const GLchar*>(shaderString.c_str());
-	mCodeLength = shaderString.length();
-	mID = glCreateShader(mType);
+	m_Code = const_cast<const GLchar*>(shaderString.c_str());
+	m_CodeLength = shaderString.length();
+	m_ID = glCreateShader(m_Type);
 
-	glShaderSource(mID, 1, &mCode, &mCodeLength);
+	glShaderSource(m_ID, 1, &m_Code, &m_CodeLength);
 
 }
 
@@ -42,9 +43,9 @@ GLint Shader::compile() {
 	//Compiles the shader and returns GL_TRUE if successful or GL_FALSE otherwise
 	GLint status;
 
-	glCompileShader(mID);
-	glGetShaderiv(mID, GL_COMPILE_STATUS, &status);
-	glGetShaderInfoLog(mID, 512, NULL, mLog);
+	glCompileShader(m_ID);
+	glGetShaderiv(m_ID, GL_COMPILE_STATUS, &status);
+	glGetShaderInfoLog(m_ID, 512, NULL, m_Log);
 
 	return status;
 }

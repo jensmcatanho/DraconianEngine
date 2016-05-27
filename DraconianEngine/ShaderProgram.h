@@ -28,17 +28,17 @@ class ShaderProgram {
 		GLint getUniformLocation(const GLchar *);
 
 	private:
-		GLuint mID;
-		GLuint mVertexID;
-		GLuint mFragmentID;
-		GLuint mGeometryID;
-		char mLog[512];
-		GLint mIsValid;
+		GLuint m_ID;
+		GLuint m_VertexID;
+		GLuint m_FragmentID;
+		GLuint m_GeometryID;
+		char m_Log[512];
+		GLint m_IsValid;
 
 };
 
 inline void ShaderProgram::enable() {
-	glUseProgram(mID);
+	glUseProgram(m_ID);
 }
 
 inline void ShaderProgram::disable() {
@@ -46,27 +46,27 @@ inline void ShaderProgram::disable() {
 }
 
 inline GLuint ShaderProgram::getID() const {
-	return mID;
+	return m_ID;
 }
 
 inline GLuint ShaderProgram::getVertexID() const {
-	return mVertexID;
+	return m_VertexID;
 }
 
 inline GLuint ShaderProgram::getFragmentID() const {
-	return mFragmentID;
+	return m_FragmentID;
 }
 
 inline GLuint ShaderProgram::getGeometryID() const {
-	return mGeometryID;
+	return m_GeometryID;
 }
 
 inline std::string ShaderProgram::infoLog() const {
-	return mLog;
+	return m_Log;
 }
 
 inline GLint ShaderProgram::isValid() const {
-	return mIsValid;
+	return m_IsValid;
 }
 
 }

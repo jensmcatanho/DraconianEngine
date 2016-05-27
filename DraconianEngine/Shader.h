@@ -19,37 +19,37 @@ class Shader {
 		inline std::string infoLog() const;
 
 	private:
-		GLuint mID;
-		GLenum mType;
-		const GLchar* mCode;
-		int mCodeLength;
-		const GLchar* mPath;
-		char mLog[512];
+		GLuint m_ID;
+		GLenum m_Type;
+		const GLchar* m_Code;
+		int m_CodeLength;
+		const GLchar* m_Path;
+		char m_Log[512];
 
 };
 
 inline GLuint Shader::getID() const {
-	return mID;
+	return m_ID;
 }
 
 inline GLenum Shader::getType() const {
-	return mType;
+	return m_Type;
 }
 
 inline const GLchar* Shader::getCode() const {
-	return mCode;
+	return m_Code;
 }
 
 inline int Shader::getCodeLength() const {
-	return mCodeLength;
+	return m_CodeLength;
 }
 
 inline const GLchar* Shader::getPath() const {
-	return mPath;
+	return m_Path;
 }
 
 inline std::string Shader::infoLog() const {
-	return mLog;
+	return m_Log;
 }
 
 }

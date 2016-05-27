@@ -3,44 +3,44 @@
 namespace Draconian {
 
 ShaderProgram::ShaderProgram(GLuint vId, GLuint fId) :
-	mVertexID(vId),
-	mFragmentID(fId),
-	mGeometryID(0),
-	mIsValid(GL_FALSE)
+	m_VertexID(vId),
+	m_FragmentID(fId),
+	m_GeometryID(0),
+	m_IsValid(GL_FALSE)
 {}
 
 ShaderProgram::ShaderProgram(GLuint vId, GLuint fId, GLuint gId) :
-	mVertexID(vId),
-	mFragmentID(fId),
-	mGeometryID(gId),
-	mIsValid(GL_FALSE)
+	m_VertexID(vId),
+	m_FragmentID(fId),
+	m_GeometryID(gId),
+	m_IsValid(GL_FALSE)
 {}
 
 ShaderProgram::~ShaderProgram() {
-	glDetachShader(mID, mVertexID);
-	glDetachShader(mID, mFragmentID);
+	glDetachShader(m_ID, m_VertexID);
+	glDetachShader(m_ID, m_FragmentID);
 	
-	if (mGeometryID) 
-		glDetachShader(mID, mVertexID);
+	if (m_GeometryID)
+		glDetachShader(m_ID, m_VertexID);
 	
-	glDeleteProgram(mID);
+	glDeleteProgram(m_ID);
 }
 
 GLint ShaderProgram::initialize() {
 	GLint status;
 
-	mID = glCreateProgram();
+	m_ID = glCreateProgram();
 
-	glAttachShader(mID, mVertexID);
-	glAttachShader(mID, mFragmentID);
+	glAttachShader(m_ID, m_VertexID);
+	glAttachShader(m_ID, m_FragmentID);
 	
-	glLinkProgram(mID);
-	glValidateProgram(mID);
-	glUseProgram(mID);
+	glLinkProgram(m_ID);
+	glValidateProgram(m_ID);
+	glUseProgram(m_ID);
 	
-	glGetProgramiv(mID, GL_LINK_STATUS, &status);
-	glGetProgramiv(mID, GL_VALIDATE_STATUS, &mIsValid);
-	glGetProgramInfoLog(mID, 512, NULL, mLog);
+	glGetProgramiv(m_ID, GL_LINK_STATUS, &status);
+	glGetProgramiv(m_ID, GL_VALIDATE_STATUS, &m_IsValid);
+	glGetProgramInfoLog(m_ID, 512, NULL, m_Log);
 	
 	return status;
 }
@@ -51,7 +51,7 @@ void ShaderProgram::setUniform(const GLchar *name, T value) {
 }
 
 GLint ShaderProgram::getUniformLocation(const GLchar *name) {
-	return glGetUniformLocation(mID, name);
+	return glGetUniformLocation(m_ID, name);
 
 }
 
