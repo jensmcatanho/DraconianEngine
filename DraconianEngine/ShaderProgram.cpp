@@ -45,4 +45,14 @@ GLint ShaderProgram::initialize() {
 	return status;
 }
 
+template <typename T>
+void ShaderProgram::setUniform(const GLchar *name, T value) {
+	// TODO: Check for a good solution for testing which GL function to call based on T's type
+}
+
+GLint ShaderProgram::getUniformLocation(const GLchar *name) {
+	return glGetUniformLocation(mID, name);
+
+}
+
 }

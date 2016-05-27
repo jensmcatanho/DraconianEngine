@@ -39,8 +39,9 @@ void Shader::initialize() {
 }
 
 GLint Shader::compile() {
-	//Compilates the shader and returns GL_TRUE if successful or GL_FALSE otherwise
+	//Compiles the shader and returns GL_TRUE if successful or GL_FALSE otherwise
 	GLint status;
+
 	glCompileShader(mID);
 	glGetShaderiv(mID, GL_COMPILE_STATUS, &status);
 	glGetShaderInfoLog(mID, 512, NULL, mLog);

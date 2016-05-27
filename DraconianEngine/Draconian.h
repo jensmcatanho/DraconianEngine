@@ -1,15 +1,20 @@
 #pragma once
 
-// STL
+//--------------------------------------------------- STL
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <vector>
 
-// Graphics
-#include <GL/glew.h>
+//--------------------------------------------------- Graphics
+#include <GL/glew.h> 
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 
+#include "Buffer.h"
 #include "Shader.h"
 #include "ShaderProgram.h"
-#include "VertexArrayObject.h"
-#include "VertexBufferObject.h"
+
+//--------------------------------------------------- Other
+#include "OBJLoader.h"
+#include "Object.h"

@@ -14,12 +14,18 @@ class ShaderProgram {
 		inline void enable();
 		inline void disable();
 
+		template <typename T> 
+		void setUniform(const GLchar *, T);
+
 		inline GLuint getID() const;
 		inline GLuint getVertexID() const;
 		inline GLuint getFragmentID() const;
 		inline GLuint getGeometryID() const;
 		inline std::string infoLog() const;
 		inline GLint isValid() const;
+
+	protected:
+		GLint getUniformLocation(const GLchar *);
 
 	private:
 		GLuint mID;

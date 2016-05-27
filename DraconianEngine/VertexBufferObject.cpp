@@ -2,19 +2,21 @@
 
 namespace Draconian {
 
-VertexBufferObject::VertexBufferObject(size_t vertexSize, GLfloat* vertices) {
-	glGenBuffers(1, &mVBO);
-	glBindBuffer(GL_ARRAY_BUFFER, mVBO);
-	glBufferData(GL_ARRAY_BUFFER, vertexSize, vertices, GL_STATIC_DRAW);
+	VertexBufferObject::VertexBufferObject(GLfloat *data, GLsizei dataSize, GLuint componentCount)
+	: m_ComponentCount(componentCount) {
 
+	glGenBuffers(1, &m_ID);
+	glBindBuffer(GL_ARRAY_BUFFER, m_ID);
+	glBufferData(GL_ARRAY_BUFFER, dataSize, data, GL_STATIC_DRAW);
+#if 0
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+#endif
 }
 
 
 VertexBufferObject::~VertexBufferObject() {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glDeleteBuffers(1, &mVBO);
+	glDeleteBuffers(1, &m_ID);
 }
-
-
 
 }

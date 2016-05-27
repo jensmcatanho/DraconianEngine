@@ -4,6 +4,10 @@
 
 #include "Draconian.h"
 
+#include "IndexBufferObject.h"
+#include "VertexArrayObject.h"
+#include "VertexBufferObject.h"
+
 int main(int argc, char *argv[]) {
 	// GLFW initialization
 	if (!glfwInit()) {
@@ -27,19 +31,19 @@ int main(int argc, char *argv[]) {
 	std::cout << "GLEW initialized." << std::endl;
 
 	GLfloat vertices[] = {
-		0.0f, 0.5f,
-		0.5f, -0.5f,
-		-0.5f, -0.5f
+		-0.5f,  0.5f,
+		 0.5f,  0.5f,
+		 0.5f, -0.5f,
+		-0.5f, -0.5f,
+		-0.5f,  0.5f,
+		 0.5f, -0.5f
+
 	};
 
-	// Create Vertex Array Object
-	Draconian::VertexArrayObject vao;
-	vao.bind();
-	std::cout << "VAO created and binded." << std::endl;
-
-	//Vertex Buffer Object
-	Draconian::VertexBufferObject vbo(sizeof(vertices), vertices);
-	std::cout << "VBO created and binded." << std::endl;
+	GLuint indices[] = {
+		0, 1, 2,
+		0, 2, 3
+	};
 
 	// Create and compile the vertex shader
 	Draconian::Shader vertex(VERTEX_PATH, GL_VERTEX_SHADER);
@@ -77,16 +81,41 @@ int main(int argc, char *argv[]) {
 	}
 	std::cout << "Shaders linked." << std::endl;
 
-	// Specify the layout of the vertex data
-	GLint posAttrib = glGetAttribLocation(shaderProgram.getID(), "position");
+	// Create Vertex Array Object
+	Draconian::VertexArrayObject vao;
+	vao.bind();
+	std::cout << "VAO created and binded." << std::endl;
+
+	// Create Vertex Buffer Object
+	Draconian::VertexBufferObject vbo(vertices, sizeof(vertices), 2);
+	vao.addBuffer(&vbo, glGetAttribLocation(shaderProgram.getID(), "position"));
+	std::cout << "VBO created and binded." << std::endl;
+
+	// Create Index Buffer Object
+	Draconian::IndexBufferObject ibo(indices, sizeof(indices), 6);
+	std::cout << "IBO created and binded" << std::endl;
+
+	/* Specify the layout of the vertex data
+	GLint posAttrib = ;
 	glEnableVertexAttribArray(posAttrib);
 	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
-	std::cout << "Layout of the vertex data specified." << std::endl;
+	std::cout << "Layout of the vertex data specified." << std::endl;*/
+
+	glUniform2f(glGetUniformLocation(shaderProgram.getID(), "light_pos"), 1.0f, 0.5f);
 
 	while (!glfwWindowShouldClose(window)) {
-		glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+
+#if 0
+		vao.bind();
+		ibo.bind();
+#endif
+		glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_INT, 0);
+#if 0
+		ibo.unbind();
+		vao.unbind();
+#endif
 
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			glfwSetWindowShouldClose(window, GL_TRUE);
@@ -94,9 +123,6 @@ int main(int argc, char *argv[]) {
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-
-	// Prepare to close the application
-	glfwTerminate();
 
 	return EXIT_SUCCESS;
 }
