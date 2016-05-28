@@ -1,6 +1,8 @@
 #pragma once
 
-#include "Draconian.h"
+#include <iostream>
+
+#include <GL/glew.h>
 
 namespace Draconian {
 

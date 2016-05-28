@@ -27,7 +27,7 @@ void Shader::initialize() {
 		shaderString = shaderStream.str();
 
 	} catch (std::ifstream::failure e) {
-		std::cout << "Error while reading the file. (Does the file exist?)" << std::endl;
+		std::cerr << "Error while reading the file. (Does the file exist?)" << std::endl;
 
 	}
 
