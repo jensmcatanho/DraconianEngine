@@ -7,6 +7,9 @@ namespace Draconian {
 class VertexBufferObject : Buffer {
 	public:
 		VertexBufferObject(GLfloat *, GLsizei, GLuint);
+		VertexBufferObject(glm::vec2 *, GLsizei, GLuint);
+		VertexBufferObject(glm::vec3 *, GLsizei, GLuint);
+		VertexBufferObject(glm::vec4 *, GLsizei, GLuint);
 		~VertexBufferObject();
 
 		inline void bind() const;

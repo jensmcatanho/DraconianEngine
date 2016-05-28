@@ -89,7 +89,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OBJLoader.cpp" />
-    <ClCompile Include="RenderWindow.cpp" />
+    <ClCompile Include="Window.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="VertexArrayObject.cpp" />
@@ -102,7 +102,7 @@
     <ClInclude Include="IndexBufferObject.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OBJLoader.h" />
-    <ClInclude Include="RenderWindow.h" />
+    <ClInclude Include="Window.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="Singleton.h" />
