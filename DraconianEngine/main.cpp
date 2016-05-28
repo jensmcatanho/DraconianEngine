@@ -1,4 +1,3 @@
-#define GLEW_STATIC
 #define VERTEX_PATH "vertex.glsl"
 #define FRAG_PATH "frag.glsl"
 
@@ -7,6 +6,8 @@
 #include "IndexBufferObject.h"
 #include "VertexArrayObject.h"
 #include "VertexBufferObject.h"
+
+#include "Simple2DRenderer.h"
 
 int main(int argc, char *argv[]) {
 	// GLFW initialization
@@ -30,13 +31,11 @@ int main(int argc, char *argv[]) {
 	}
 	std::cout << "GLEW initialized." << std::endl;
 
-	GLfloat vertices[] = {
-		-0.5f,  0.5f,
-		 0.5f,  0.5f,
-		 0.5f, -0.5f,
-		-0.5f, -0.5f,
-		-0.5f,  0.5f,
-		 0.5f, -0.5f
+	glm::vec2 vertices[] = {
+		glm::vec2(-0.5f,  0.5f),
+		glm::vec2( 0.5f,  0.5f),
+		glm::vec2( 0.5f, -0.5f),
+		glm::vec2(-0.5f, -0.5f)
 
 	};
 
@@ -81,25 +80,9 @@ int main(int argc, char *argv[]) {
 	}
 	std::cout << "Shaders linked." << std::endl;
 
-	// Create Vertex Array Object
-	Draconian::VertexArrayObject vao;
-	vao.bind();
-	std::cout << "VAO created and binded." << std::endl;
-
-	// Create Vertex Buffer Object
-	Draconian::VertexBufferObject vbo(vertices, sizeof(vertices), 2);
-	vao.addBuffer(&vbo, glGetAttribLocation(shaderProgram.getID(), "position"));
-	std::cout << "VBO created and binded." << std::endl;
-
-	// Create Index Buffer Object
-	Draconian::IndexBufferObject ibo(indices, sizeof(indices), 6);
-	std::cout << "IBO created and binded" << std::endl;
-
-	/* Specify the layout of the vertex data
-	GLint posAttrib = ;
-	glEnableVertexAttribArray(posAttrib);
-	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
-	std::cout << "Layout of the vertex data specified." << std::endl;*/
+	Draconian::Renderable2D sprite(glm::vec3(-0.5, 0, 0), glm::vec2(0.5, 0.5), glm::vec4(0, 0, 0, 0), shaderProgram);
+	Draconian::Renderable2D sprite2(glm::vec3(0.5, 0, 0), glm::vec2(0.5, 0.5), glm::vec4(0, 0, 0, 0), shaderProgram);
+	Draconian::Simple2DRenderer renderer;
 
 	glUniform2f(glGetUniformLocation(shaderProgram.getID(), "light_pos"), 1.0f, 0.5f);
 
@@ -107,15 +90,10 @@ int main(int argc, char *argv[]) {
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-#if 0
-		vao.bind();
-		ibo.bind();
-#endif
-		glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_INT, 0);
-#if 0
-		ibo.unbind();
-		vao.unbind();
-#endif
+		renderer.submit(&sprite);
+		renderer.submit(&sprite2);
+		renderer.flush();
+		
 
 		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 			glfwSetWindowShouldClose(window, GL_TRUE);

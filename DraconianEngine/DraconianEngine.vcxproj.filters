@@ -60,6 +60,15 @@
     <ClCompile Include="Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Renderable2D.cpp">
+      <Filter>Source Files\Graphics\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer2D.cpp">
+      <Filter>Source Files\Graphics\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="Simple2DRenderer.cpp">
+      <Filter>Source Files\Graphics\OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Draconian.h">
@@ -98,6 +107,15 @@
     <ClInclude Include="Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Renderable2D.h">
+      <Filter>Header Files\Graphics\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer2D.h">
+      <Filter>Header Files\Graphics\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Simple2DRenderer.h">
+      <Filter>Header Files\Graphics\OpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="vertex.glsl">
@@ -106,8 +124,5 @@
     <Text Include="frag.glsl">
       <Filter>Source Files\Graphics</Filter>
     </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
