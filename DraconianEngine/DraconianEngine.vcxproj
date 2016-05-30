@@ -83,6 +83,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Batch2DRenderer.cpp" />
     <ClCompile Include="Buffer.cpp" />
     <ClCompile Include="GLFWWindow.cpp" />
     <ClCompile Include="IndexBufferObject.cpp" />
@@ -99,6 +100,7 @@
     <ClCompile Include="VertexBufferObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Batch2DRenderer.h" />
     <ClInclude Include="Buffer.h" />
     <ClInclude Include="Draconian.h" />
     <ClInclude Include="GLFWWindow.h" />

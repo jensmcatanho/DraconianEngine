@@ -6,7 +6,7 @@ namespace Draconian {
 
 class IndexBufferObject : Buffer {
 	public:
-		IndexBufferObject(GLuint *, GLsizei, GLuint);
+		IndexBufferObject(GLuint *, GLsizei, GLuint, GLenum);
 		virtual ~IndexBufferObject();
 
 		inline void bind() const;
