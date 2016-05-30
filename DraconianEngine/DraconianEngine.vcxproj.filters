@@ -69,7 +69,13 @@
     <ClCompile Include="Simple2DRenderer.cpp">
       <Filter>Source Files\Graphics\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\Graphics\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="Batch2DRenderer.cpp">
+      <Filter>Source Files\Graphics\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticSprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -119,7 +125,13 @@
     <ClInclude Include="Simple2DRenderer.h">
       <Filter>Header Files\Graphics\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files\Graphics\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="Batch2DRenderer.h">
+      <Filter>Header Files\Graphics\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticSprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

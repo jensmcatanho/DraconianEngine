@@ -3,6 +3,7 @@
 #include <deque>
 
 #include "Renderer2D.h"
+#include "StaticSprite.h"
 
 namespace Draconian {
 
@@ -12,7 +13,7 @@ class Simple2DRenderer : public Renderer2D {
 		void flush() override;
 
 	private:
-		std::deque<const Renderable2D *> m_RenderQueue;
+		std::deque<const StaticSprite *> m_RenderQueue;
 };
 
 }

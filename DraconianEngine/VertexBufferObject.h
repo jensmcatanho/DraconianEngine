@@ -17,7 +17,8 @@ class VertexBufferObject : Buffer {
 
 		inline void bind() const;
 		inline void unbind() const;
-		
+		void setLayout(GLuint, GLint, GLenum, GLsizei);
+
 		inline GLuint getComponentCount() const;
 
 	private:

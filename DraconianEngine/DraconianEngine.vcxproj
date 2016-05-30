@@ -93,6 +93,8 @@
     <ClCompile Include="Renderable2D.cpp" />
     <ClCompile Include="Renderer2D.cpp" />
     <ClCompile Include="Simple2DRenderer.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="StaticSprite.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
@@ -110,6 +112,8 @@
     <ClInclude Include="Renderable2D.h" />
     <ClInclude Include="Renderer2D.h" />
     <ClInclude Include="Simple2DRenderer.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="StaticSprite.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
