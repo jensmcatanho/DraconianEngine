@@ -1,25 +1,28 @@
 #pragma once
 
-#include "RenderWindow.h"
+#include "Window.h"
 
 namespace Draconian {
 
-class GLFWWindow : public RenderWindow {
+class GLFWWindow : public Window {
 	public:
-		GLFWWindow();
+		GLFWWindow(char *, int, int);
 		virtual ~GLFWWindow();
 
-		void initialize(const std::string, int, int, bool);
-		void destroy();
-		inline void swapBuffers();
+		bool initialize() override;
+		void clear() override;
+		void update() override;
+		bool closed() override;
 
 	private:
-		GLFWwindow* mScreen;
+		GLFWwindow *m_Window;
+
+		friend static void resize_window(GLFWwindow *, int, int);
+		friend static void key_callback(GLFWwindow *, int, int, int, int);
+		friend static void mouse_callback(GLFWwindow *, int, int, int);
+		friend static void cursor_position_callback(GLFWwindow *, double, double);
+
 
 };
-
-inline void GLFWWindow::swapBuffers() {
-	glfwSwapBuffers(mScreen);
-}
 
 }

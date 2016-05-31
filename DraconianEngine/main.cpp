@@ -8,28 +8,22 @@
 #include "VertexBufferObject.h"
 
 #include "Simple2DRenderer.h"
+#include "Batch2DRenderer.h"
+#include "StaticSprite.h"
+#include "Sprite.h"
+#include "Timer.h"
+
+#include "GLFWWindow.h"
+
+#include <time.h>
+
+#define BATCH_RENDERER 0
 
 int main(int argc, char *argv[]) {
-	// GLFW initialization
-	if (!glfwInit()) {
-		std::cerr << "Failed to initialize GLFW." << std::endl;
+	Draconian::GLFWWindow w("OpenGL", 800, 600);
+
+	if (!w.initialize())
 		return -1;
-
-	}
-	std::cout << "GLFW initialized." << std::endl;
-
-	GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL", nullptr, nullptr);
-	glfwMakeContextCurrent(window);
-	std::cout << "Window and context created." << std::endl;
-
-	// GLEW initialization
-	glewExperimental = GL_TRUE;
-	if (glewInit() != GLEW_OK) {
-		std::cerr << "Failed to initialize GLEW." << std::endl;
-		return -1;
-
-	}
-	std::cout << "GLEW initialized." << std::endl;
 
 	glm::vec2 vertices[] = {
 		glm::vec2(-0.5f,  0.5f),
@@ -49,8 +43,10 @@ int main(int argc, char *argv[]) {
 	vertex.initialize();
 
 	if (!vertex.compile()) {
-		vertex.infoLog();
+		std::cout << vertex.infoLog() << std::endl;
 		glfwTerminate();
+		int c;
+		std::cin >> c;
 
 		return EXIT_FAILURE;
 	}
@@ -80,26 +76,47 @@ int main(int argc, char *argv[]) {
 	}
 	std::cout << "Shaders linked." << std::endl;
 
-	Draconian::Renderable2D sprite(glm::vec3(-0.5, 0, 0), glm::vec2(0.5, 0.5), glm::vec4(0, 0, 0, 0), shaderProgram);
-	Draconian::Renderable2D sprite2(glm::vec3(0.5, 0, 0), glm::vec2(0.5, 0.5), glm::vec4(0, 0, 0, 0), shaderProgram);
+#if BATCH_RENDERER
+	Draconian::Sprite sprite(-0.5, 0, 0.5, 0.5, glm::vec4(0, 0, 0, 0));
+	Draconian::Sprite sprite2(0.5, 0, 0.5, 0.5, glm::vec4(0, 0, 0, 0));
+	Draconian::Batch2DRenderer renderer;
+	renderer.m_VBO->setLayout(;
+#else
+	Draconian::StaticSprite sprite(-0.5, 0, 0.5, 0.5, glm::vec4(0, 0, 0, 0), shaderProgram);
+	Draconian::StaticSprite sprite2(0.5, 0, 0.5, 0.5, glm::vec4(0, 0, 0, 0), shaderProgram);
 	Draconian::Simple2DRenderer renderer;
+#endif
 
 	glUniform2f(glGetUniformLocation(shaderProgram.getID(), "light_pos"), 1.0f, 0.5f);
 
-	while (!glfwWindowShouldClose(window)) {
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+	Draconian::Timer time;
+	float timer = 0.0f;
+	unsigned int frames = 0;
 
+	while (!w.closed()) {
+		w.clear();
+
+#if BATCH_RENDERER
+		renderer.begin();
+#endif
 		renderer.submit(&sprite);
 		renderer.submit(&sprite2);
-		renderer.flush();
-		
+#if BATCH_RENDERER
+		renderer.end();
+#endif
+		renderer.flush();	
 
-		if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-			glfwSetWindowShouldClose(window, GL_TRUE);
+		//if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		//	glfwSetWindowShouldClose(window, GL_TRUE);
 		
-		glfwSwapBuffers(window);
-		glfwPollEvents();
+		w.update();
+
+		frames++;
+		if (time.elapsed() - timer > 1.0f) {
+			timer += 1.0f;
+			std::cout << frames << " FPS" << std::endl;
+			frames = 0;
+		}
 	}
 
 	return EXIT_SUCCESS;

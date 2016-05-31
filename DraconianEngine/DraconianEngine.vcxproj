@@ -73,6 +73,10 @@
       <PreprocessorDefinitions>WIN32;GLEW_STATIC;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>false</SDLCheck>
       <AdditionalIncludeDirectories>C:\Users\Jean\Dropbox\OpenGL\glfw\include;C:\Users\Jean\Dropbox\OpenGL\glew\include;C:\Users\Jean\Dropbox\OpenGL\glm;C:\Users\Jean\Documents\Visual Studio 2013\Projects\DraconianEngine\DraconianEngine\Graphics\GL\include</AdditionalIncludeDirectories>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -80,6 +84,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>C:\Users\Jean\Dropbox\OpenGL\glfw\lib-vc2013;C:\Users\Jean\Dropbox\OpenGL\glew\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32s.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -88,18 +93,17 @@
     <ClCompile Include="GLFWWindow.cpp" />
     <ClCompile Include="IndexBufferObject.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="OBJLoader.cpp" />
     <ClCompile Include="Renderable2D.cpp" />
     <ClCompile Include="Renderer2D.cpp" />
     <ClCompile Include="Simple2DRenderer.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StaticSprite.cpp" />
-    <ClCompile Include="Window.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="VertexArrayObject.cpp" />
     <ClCompile Include="VertexBufferObject.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Batch2DRenderer.h" />
@@ -107,19 +111,18 @@
     <ClInclude Include="Draconian.h" />
     <ClInclude Include="GLFWWindow.h" />
     <ClInclude Include="IndexBufferObject.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="OBJLoader.h" />
     <ClInclude Include="Renderable2D.h" />
     <ClInclude Include="Renderer2D.h" />
     <ClInclude Include="Simple2DRenderer.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="StaticSprite.h" />
-    <ClInclude Include="Window.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="VertexArrayObject.h" />
     <ClInclude Include="VertexBufferObject.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="frag.glsl" />
