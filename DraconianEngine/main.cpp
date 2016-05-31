@@ -44,13 +44,8 @@ int main(int argc, char *argv[]) {
 
 	if (!vertex.compile()) {
 		std::cout << vertex.infoLog() << std::endl;
-		glfwTerminate();
-		int c;
-		std::cin >> c;
-
 		return EXIT_FAILURE;
 	}
-
 	std::cout << "Vertex shader created and compiled." << std::endl;
 
 	// Create and compile the fragment shader
@@ -58,9 +53,7 @@ int main(int argc, char *argv[]) {
 	fragment.initialize();
 
 	if (!fragment.compile()) {
-		fragment.infoLog();
-		glfwTerminate();
-
+		std::cout << fragment.infoLog() << std::endl;
 		return EXIT_FAILURE;
 	}
 	std::cout << "Fragment shader created and compiled." << std::endl;
@@ -69,9 +62,7 @@ int main(int argc, char *argv[]) {
 	Draconian::ShaderProgram shaderProgram(vertex.getID(), fragment.getID());
 
 	if (!shaderProgram.initialize()) {
-		shaderProgram.infoLog();
-		glfwTerminate();
-
+		std::cout << shaderProgram.infoLog() << std::endl;
 		return EXIT_FAILURE;
 	}
 	std::cout << "Shaders linked." << std::endl;
