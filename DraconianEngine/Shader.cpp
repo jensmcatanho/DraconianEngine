@@ -2,10 +2,12 @@
 
 namespace Draconian {
 
-Shader::Shader(const GLchar* p, GLenum t) :
-	m_Path(p),
-	m_Type(t)
-{}
+Shader::Shader(const GLchar* path, GLenum type) :
+	m_Path(path),
+	m_Type(type) {
+
+	initialize();
+}
 
 Shader::~Shader() {
 	if (m_ID)
@@ -15,22 +17,9 @@ Shader::~Shader() {
 
 void Shader::initialize() {
 	std::string shaderString;
-	std::ifstream shaderFile;
-	std::stringstream shaderStream;
+	FileManager fileManager;
 
-	shaderFile.exceptions(std::ifstream::badbit);
-
-	try {
-		shaderFile.open(m_Path);
-		shaderStream << shaderFile.rdbuf();
-		shaderFile.close();
-		shaderString = shaderStream.str();
-
-	} catch (std::ifstream::failure e) {
-		std::cerr << "Error while reading the file. (Does the file exist?)" << std::endl;
-
-	}
-
+	shaderString = fileManager.getStringStream(m_Path).str();
 	m_Code = const_cast<const GLchar*>(shaderString.c_str());
 	m_CodeLength = shaderString.length();
 	m_ID = glCreateShader(m_Type);

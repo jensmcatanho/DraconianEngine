@@ -3,6 +3,8 @@
 
 #include "Draconian.h"
 
+#include "FileManager.h"
+
 #include "IndexBufferObject.h"
 #include "VertexArrayObject.h"
 #include "VertexBufferObject.h"
@@ -40,8 +42,6 @@ int main(int argc, char *argv[]) {
 
 	// Create and compile the vertex shader
 	Draconian::Shader vertex(VERTEX_PATH, GL_VERTEX_SHADER);
-	vertex.initialize();
-
 	if (!vertex.compile()) {
 		std::cout << vertex.infoLog() << std::endl;
 		return EXIT_FAILURE;
@@ -50,8 +50,6 @@ int main(int argc, char *argv[]) {
 
 	// Create and compile the fragment shader
 	Draconian::Shader fragment(FRAG_PATH, GL_FRAGMENT_SHADER);
-	fragment.initialize();
-
 	if (!fragment.compile()) {
 		std::cout << fragment.infoLog() << std::endl;
 		return EXIT_FAILURE;

@@ -90,6 +90,7 @@
   <ItemGroup>
     <ClCompile Include="Batch2DRenderer.cpp" />
     <ClCompile Include="Buffer.cpp" />
+    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="GLFWWindow.cpp" />
     <ClCompile Include="IndexBufferObject.cpp" />
     <ClCompile Include="main.cpp" />
@@ -109,6 +110,7 @@
     <ClInclude Include="Batch2DRenderer.h" />
     <ClInclude Include="Buffer.h" />
     <ClInclude Include="Draconian.h" />
+    <ClInclude Include="FileManager.h" />
     <ClInclude Include="GLFWWindow.h" />
     <ClInclude Include="IndexBufferObject.h" />
     <ClInclude Include="Renderable2D.h" />
@@ -122,6 +124,7 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="VertexArrayObject.h" />
     <ClInclude Include="VertexBufferObject.h" />
+    <ClInclude Include="Win32Window.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

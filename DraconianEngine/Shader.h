@@ -1,10 +1,8 @@
 #pragma once
 
-#include <fstream>
-#include <iostream>
-#include <sstream>
-
 #include <GL/glew.h>
+
+#include "FileManager.h"
 
 namespace Draconian{
 
@@ -15,6 +13,7 @@ class Shader {
 
 		void initialize();
 		GLint compile();
+
 		inline GLuint getID() const;
 		inline GLenum getType() const;
 		inline const GLchar* getCode() const;
