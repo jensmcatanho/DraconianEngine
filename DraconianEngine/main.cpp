@@ -71,17 +71,17 @@ int main(int argc, char *argv[]) {
 	Draconian::Batch2DRenderer renderer;
 	renderer.m_VBO->setLayout(;
 #else
-	Draconian::StaticSprite sprite(-0.5, 0, 0.5, 0.5, glm::vec4(0, 0, 0, 0), shaderProgram);
-	Draconian::StaticSprite sprite2(0.5, 0, 0.5, 0.5, glm::vec4(0, 0, 0, 0), shaderProgram);
+	Draconian::StaticSprite sprite(-0.5, -0.5, 1.0, 1.0, glm::vec4(0, 0, 0, 0), shaderProgram);
+	//Draconian::StaticSprite sprite2(0.5, 0, 0.5, 0.5, glm::vec4(0, 0, 0, 0), shaderProgram);
 	Draconian::Simple2DRenderer renderer;
 #endif
 
 	glUniform2f(glGetUniformLocation(shaderProgram.getID(), "light_pos"), 1.0f, 0.5f);
 
-	Draconian::Timer time;
+	/*Draconian::Timer time;
 	float timer = 0.0f;
 	unsigned int frames = 0;
-
+	*/
 	while (!w.closed()) {
 		w.clear();
 
@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
 		renderer.begin();
 #endif
 		renderer.submit(&sprite);
-		renderer.submit(&sprite2);
+		//renderer.submit(&sprite2);
 #if BATCH_RENDERER
 		renderer.end();
 #endif
@@ -100,12 +100,12 @@ int main(int argc, char *argv[]) {
 		
 		w.update();
 
-		frames++;
+		/*frames++;
 		if (time.elapsed() - timer > 1.0f) {
 			timer += 1.0f;
 			std::cout << frames << " FPS" << std::endl;
 			frames = 0;
-		}
+		}*/
 	}
 
 	return EXIT_SUCCESS;

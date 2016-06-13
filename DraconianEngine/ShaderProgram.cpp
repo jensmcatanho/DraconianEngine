@@ -45,14 +45,76 @@ GLint ShaderProgram::initialize() {
 	return status;
 }
 
-template <typename T>
-void ShaderProgram::setUniform(const GLchar *name, T value) {
-	// TODO: Check for a good solution for testing which GL function to call based on T's type
+void ShaderProgram::setUniform(const GLchar *name, GLsizei count, GLfloat *value) const {
+	switch (count) {
+		case 1:
+			glUniform1fv(getUniformLocation(name), count, value);
+			break;
+
+		case 2:
+			glUniform2fv(getUniformLocation(name), count, value);
+			break;
+
+		case 3:
+			glUniform3fv(getUniformLocation(name), count, value);
+			break;
+
+		case 4:
+			glUniform4fv(getUniformLocation(name), count, value);
+			break;
+
+		default:
+			std::cerr << "Invalid count value." << std::endl;
+			break;
+	}
 }
 
-GLint ShaderProgram::getUniformLocation(const GLchar *name) {
-	return glGetUniformLocation(m_ID, name);
+void ShaderProgram::setUniform(const GLchar *name, GLsizei count, GLint *value) const {
+	switch (count) {
+	case 1:
+		glUniform1iv(getUniformLocation(name), count, value);
+		break;
 
+	case 2:
+		glUniform2iv(getUniformLocation(name), count, value);
+		break;
+
+	case 3:
+		glUniform3iv(getUniformLocation(name), count, value);
+		break;
+
+	case 4:
+		glUniform4iv(getUniformLocation(name), count, value);
+		break;
+
+	default:
+		std::cerr << "Invalid count value." << std::endl;
+		break;
+	}
+}
+
+void ShaderProgram::setUniform(const GLchar *name, GLsizei count, GLuint *value) const {
+	switch (count) {
+	case 1:
+		glUniform1uiv(getUniformLocation(name), count, value);
+		break;
+
+	case 2:
+		glUniform2uiv(getUniformLocation(name), count, value);
+		break;
+
+	case 3:
+		glUniform3uiv(getUniformLocation(name), count, value);
+		break;
+
+	case 4:
+		glUniform4uiv(getUniformLocation(name), count, value);
+		break;
+
+	default:
+		std::cerr << "Invalid count value." << std::endl;
+		break;
+	}
 }
 
 }
