@@ -22,7 +22,7 @@ class Singleton {
 		}
 
 	protected:
-		static const T *m_Instance;
+		static T *m_Instance;
 };
 
 }

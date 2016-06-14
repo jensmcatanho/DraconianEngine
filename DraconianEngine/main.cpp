@@ -15,16 +15,19 @@
 #include "Sprite.h"
 #include "Timer.h"
 
+#include "MainCore.h"
 #include "GLFWWindow.h"
+#include "SDLWindow.h"
 
 #include <time.h>
 
 #define BATCH_RENDERER 0
 
+#if 0
 int main(int argc, char *argv[]) {
 	Draconian::GLFWWindow w("OpenGL", 800, 600);
 
-	if (!w.initialize())
+	if (!w.create())
 		return -1;
 
 	glm::vec2 vertices[] = {
@@ -98,7 +101,8 @@ int main(int argc, char *argv[]) {
 		//if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		//	glfwSetWindowShouldClose(window, GL_TRUE);
 		
-		w.update();
+		w.swapBuffers();
+		w.processInput();
 
 		/*frames++;
 		if (time.elapsed() - timer > 1.0f) {
@@ -109,4 +113,12 @@ int main(int argc, char *argv[]) {
 	}
 
 	return EXIT_SUCCESS;
+}
+#endif
+
+int main(int argc, char *argv[]) {
+	Draconian::MainCore m;
+	m.mainLoop();
+
+	return 0;
 }
