@@ -2,8 +2,9 @@
 
 namespace Draconian {
 
-GLFWWindow::GLFWWindow(char *title, int width, int height) :
-	Window(title, width, height) {
+	GLFWWindow::GLFWWindow(std::string title, int width, int height) :
+	Window(title, width, height),
+	m_Window(nullptr) {
 
 }
 
@@ -11,13 +12,13 @@ GLFWWindow::~GLFWWindow() {
 	glfwTerminate();
 }
 
-bool GLFWWindow::initialize() {
+bool GLFWWindow::create() {
 	if (!glfwInit()) {
 		std::cerr << "Failed to initialize GLFW." << std::endl;
 		return false;
 	}
 
-	if (!(m_Window = glfwCreateWindow(m_Width, m_Height, m_Title, nullptr, nullptr))) {
+	if (!(m_Window = glfwCreateWindow(m_Width, m_Height, m_Title.c_str(), nullptr, nullptr))) {
 		std::cerr << "Failed to create GLFW window." << std::endl;
 		return false;
 	}
@@ -35,22 +36,27 @@ bool GLFWWindow::initialize() {
 		return false;
 
 	}
-	
-	std::cout << "OpenGL " << glGetString(GL_VERSION) << std::endl;
+
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+	return true;
 }
 
-void GLFWWindow::clear() {
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}
-
-void GLFWWindow::update() {
-	glfwPollEvents();
+void GLFWWindow::swapBuffers() {
 	glfwSwapBuffers(m_Window);
 }
 
 bool GLFWWindow::closed() {
 	return glfwWindowShouldClose(m_Window) == 1;
+}
+
+void GLFWWindow::processInput() {
+	std::stringstream title;
+	title << "OpenGL " << glGetString(GL_VERSION) << " " << "x: " << m_MouseX << " " << "y: " << m_MouseY;
+	m_Title = title.str();
+
+	glfwSetWindowTitle(m_Window, m_Title.c_str());
+	glfwPollEvents();
 }
 
 // GLFW Callbacks

@@ -2,10 +2,12 @@
 
 namespace Draconian {
 
-Window::Window(char *title, int width, int height) : 
+Window::Window(std::string title, int width, int height) : 
 	m_Title(title),
 	m_Width(width),
-	m_Height(height) {
+	m_Height(height),
+	m_MouseX(0.0f),
+	m_MouseY(0.0f) {
 
 	std::fill(m_Keys, m_Keys + sizeof(m_Keys), false);
 	std::fill(m_MouseButtons, m_MouseButtons + sizeof(m_MouseButtons), false);
@@ -13,6 +15,11 @@ Window::Window(char *title, int width, int height) :
 
 Window::~Window() {
 
+}
+
+void Window::clear() {
+	glClearDepth(1.0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 bool Window::isKeyPressed(unsigned int keyCode) {

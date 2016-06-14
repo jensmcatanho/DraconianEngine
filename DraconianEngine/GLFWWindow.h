@@ -2,17 +2,19 @@
 
 #include "Window.h"
 
+#include <GLFW/glfw3.h>
+
 namespace Draconian {
 
 class GLFWWindow : public Window {
 	public:
-		GLFWWindow(char *, int, int);
-		virtual ~GLFWWindow();
+		GLFWWindow(std::string, int, int);
+		~GLFWWindow();
 
-		bool initialize() override;
-		void clear() override;
-		void update() override;
+		bool create() override;
+		void swapBuffers() override;
 		bool closed() override;
+		void processInput() override;
 
 	private:
 		GLFWwindow *m_Window;

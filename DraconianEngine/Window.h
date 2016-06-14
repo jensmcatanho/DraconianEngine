@@ -1,10 +1,12 @@
 #pragma once
 
 #include <iostream>
+#include <sstream>
 #include <cassert>
 
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
+
+#include "MainCore.h"
 
 namespace Draconian {
 
@@ -13,23 +15,26 @@ namespace Draconian {
 
 class Window {
 	public:
-		Window(char *, int, int);
+		Window(std::string, int, int);
 		virtual ~Window();
 
-		virtual bool initialize() = 0;
-		virtual void clear() = 0;
-		virtual void update() = 0;
+		inline void changeState(RenderingState) const;
+		void clear();
+
+		// Framework-specific methods
+		virtual bool create() = 0;
+		virtual void swapBuffers() = 0;
 		virtual bool closed() = 0;
+		virtual void processInput() = 0;
 
 		bool isKeyPressed(unsigned int);
 		bool isMouseButtonPressed(unsigned int);
 		void getMousePosition(float &, float &);
 
 	protected:
-		char *m_Title;
+		std::string m_Title;
 		int m_Width;
 		int m_Height;
-
 		bool m_Keys[MAX_KEYS];
 		bool m_MouseButtons[MAX_BUTTONS];
 
@@ -37,5 +42,9 @@ class Window {
 		double m_MouseY;
 
 };
+
+inline void Window::changeState(RenderingState target) const {
+	MainCore::getSingleton().currentState = target;
+}
 
 }
