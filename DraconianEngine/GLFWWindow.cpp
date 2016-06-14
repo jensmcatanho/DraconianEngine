@@ -46,16 +46,16 @@ void GLFWWindow::swapBuffers() {
 	glfwSwapBuffers(m_Window);
 }
 
-bool GLFWWindow::closed() {
-	return glfwWindowShouldClose(m_Window) == 1;
-}
-
 void GLFWWindow::processInput() {
 	std::stringstream title;
 	title << "OpenGL " << glGetString(GL_VERSION) << " " << "x: " << m_MouseX << " " << "y: " << m_MouseY;
 	m_Title = title.str();
 
 	glfwSetWindowTitle(m_Window, m_Title.c_str());
+
+	if (glfwWindowShouldClose(m_Window))
+		changeState(RenderingState::EXIT);
+
 	glfwPollEvents();
 }
 

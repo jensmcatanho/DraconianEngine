@@ -46,10 +46,6 @@ void SDLWindow::swapBuffers() {
 	SDL_GL_SwapWindow(m_Window);
 }
 
-bool SDLWindow::closed() {
-	return false;
-}
-
 void SDLWindow::processInput() {
 	SDL_Event e;
 

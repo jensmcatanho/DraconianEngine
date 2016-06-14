@@ -24,7 +24,6 @@ class Window {
 		// Framework-specific methods
 		virtual bool create() = 0;
 		virtual void swapBuffers() = 0;
-		virtual bool closed() = 0;
 		virtual void processInput() = 0;
 
 		bool isKeyPressed(unsigned int);

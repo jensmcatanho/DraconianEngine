@@ -30,8 +30,8 @@ MainCore::~MainCore() {
 }
 
 void MainCore::initSystems() {
-	//m_Window = new GLFWWindow("OpenGL", 800, 600);
-	m_Window = new SDLWindow("OpenGL", 800, 600);
+	m_Window = new GLFWWindow("OpenGL", 800, 600);
+	//m_Window = new SDLWindow("OpenGL", 800, 600);
 	
 	if (!m_Window->create()) {
 		// Later will print in the log system

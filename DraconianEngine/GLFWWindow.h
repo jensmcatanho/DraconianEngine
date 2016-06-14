@@ -13,7 +13,6 @@ class GLFWWindow : public Window {
 
 		bool create() override;
 		void swapBuffers() override;
-		bool closed() override;
 		void processInput() override;
 
 	private:
