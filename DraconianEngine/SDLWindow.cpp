@@ -1,9 +1,8 @@
 #include "SDLWindow.h"
-#include "MainCore.h"
 
 namespace Draconian {
 
-SDLWindow::SDLWindow(std::string title, int width, int height) :
+SDLWindow::SDLWindow(std::string title, uint width, uint height) :
 	Window(title, width, height),
 	m_Window(nullptr) {
 

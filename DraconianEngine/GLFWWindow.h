@@ -1,14 +1,13 @@
 #pragma once
 
 #include "Window.h"
-
 #include <GLFW/glfw3.h>
 
 namespace Draconian {
 
 class GLFWWindow : public Window {
 	public:
-		GLFWWindow(std::string, int, int);
+		GLFWWindow(std::string, uint, uint);
 		~GLFWWindow();
 
 		bool create() override;

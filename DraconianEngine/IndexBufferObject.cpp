@@ -2,8 +2,9 @@
 
 namespace Draconian {
 
-IndexBufferObject::IndexBufferObject(GLuint *data, GLsizei dataSize, GLuint count, GLenum usage)
-	: m_Count(count) {
+IndexBufferObject::IndexBufferObject(GLuint *data, GLsizei dataSize, GLuint count, GLenum usage) :
+	Buffer(),
+	m_Count(count) {
 
 	glGenBuffers(1, &m_ID);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ID);
@@ -15,7 +16,9 @@ IndexBufferObject::IndexBufferObject(GLuint *data, GLsizei dataSize, GLuint coun
 
 
 IndexBufferObject::~IndexBufferObject() {
+#if 0
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+#endif
 	glDeleteBuffers(1, &m_ID);
 
 }

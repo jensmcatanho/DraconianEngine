@@ -1,10 +1,6 @@
 #pragma once
 
-#include <vector>
-
-#include <GL/glew.h>
-
-#include "VertexBufferObject.h"
+#include "Prerequisites.h"
 
 namespace Draconian {
 

@@ -2,14 +2,16 @@
 
 namespace Draconian {
 
-Buffer::Buffer() {
+Buffer::Buffer() :
+	m_ID(0) {
 	glGenBuffers(1, &m_ID);
 
 }
 
 
 Buffer::~Buffer() {
-	glDeleteBuffers(1, &m_ID);
+	if (m_ID)
+		glDeleteBuffers(1, &m_ID);
 
 }
 

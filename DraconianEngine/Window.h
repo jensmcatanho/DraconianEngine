@@ -9,7 +9,7 @@ namespace Draconian {
 
 class Window {
 	public:
-		Window(std::string, int, int);
+		Window(std::string, uint, uint);
 		virtual ~Window();
 
 		void changeState(RenderingState) const;
@@ -20,14 +20,14 @@ class Window {
 		virtual void swapBuffers() = 0;
 		virtual void processInput() = 0;
 
-		bool isKeyPressed(unsigned int);
-		bool isMouseButtonPressed(unsigned int);
+		bool isKeyPressed(uint);
+		bool isMouseButtonPressed(uint);
 		void getMousePosition(float &, float &);
 
 	protected:
 		std::string m_Title;
-		int m_Width;
-		int m_Height;
+		uint m_Width;
+		uint m_Height;
 		bool m_Keys[MAX_KEYS];
 		bool m_MouseButtons[MAX_BUTTONS];
 

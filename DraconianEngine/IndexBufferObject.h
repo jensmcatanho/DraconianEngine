@@ -4,13 +4,13 @@
 
 namespace Draconian {
 
-class IndexBufferObject : Buffer {
+class IndexBufferObject : public Buffer {
 	public:
 		IndexBufferObject(GLuint *, GLsizei, GLuint, GLenum);
 		virtual ~IndexBufferObject();
 
-		inline void bind() const;
-		inline void unbind() const;
+		inline void bind() const override;
+		inline void unbind() const override;
 
 		inline GLuint getCount() const;
 

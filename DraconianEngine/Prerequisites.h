@@ -17,6 +17,7 @@ class FileManager;
 class LogManager;
 enum class RenderingState { EXIT, RUNNING };
 class Timer;
+class VertexBufferObject;
 class Window;
 
 }
@@ -24,7 +25,6 @@ class Window;
 #include "StandardHeaders.h"
 
 #include <GL/glew.h> 
-#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 
 // More to come...

@@ -1,13 +1,10 @@
 #pragma once
 
-#include <GL/glew.h>
-#include <glm/glm.hpp>
-
 #include "Buffer.h"
 
 namespace Draconian {
 
-class VertexBufferObject : Buffer {
+class VertexBufferObject : public Buffer {
 	public:
 		VertexBufferObject(GLfloat *, GLsizei, GLuint, GLenum);
 		VertexBufferObject(glm::vec2 *, GLsizei, GLuint, GLenum);
@@ -15,8 +12,8 @@ class VertexBufferObject : Buffer {
 		VertexBufferObject(glm::vec4 *, GLsizei, GLuint, GLenum);
 		~VertexBufferObject();
 
-		inline void bind() const;
-		inline void unbind() const;
+		inline void bind() const override;
+		inline void unbind() const override;
 		void setLayout(GLuint, GLint, GLenum, GLsizei);
 
 		inline GLuint getComponentCount() const;

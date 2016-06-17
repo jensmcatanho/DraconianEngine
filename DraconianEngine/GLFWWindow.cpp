@@ -2,7 +2,7 @@
 
 namespace Draconian {
 
-	GLFWWindow::GLFWWindow(std::string title, int width, int height) :
+GLFWWindow::GLFWWindow(std::string title, uint width, uint height) :
 	Window(title, width, height),
 	m_Window(nullptr) {
 

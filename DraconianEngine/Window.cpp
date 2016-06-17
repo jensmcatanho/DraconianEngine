@@ -4,7 +4,7 @@
 
 namespace Draconian {
 
-Window::Window(std::string title, int width, int height) : 
+Window::Window(std::string title, uint width, uint height) : 
 	m_Title(title),
 	m_Width(width),
 	m_Height(height),
@@ -28,13 +28,13 @@ void Window::changeState(RenderingState target) const {
 	MainCore::getSingleton().currentState = target;
 }
 
-bool Window::isKeyPressed(unsigned int keyCode) {
+bool Window::isKeyPressed(uint keyCode) {
 	assert(keyCode < MAX_KEYS);
 
 	return m_Keys[keyCode];
 }
 
-bool Window::isMouseButtonPressed(unsigned int keyCode) {
+bool Window::isMouseButtonPressed(uint keyCode) {
 	assert(keyCode < MAX_BUTTONS);
 
 	return m_MouseButtons[keyCode];

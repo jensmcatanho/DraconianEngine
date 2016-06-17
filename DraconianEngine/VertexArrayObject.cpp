@@ -1,4 +1,5 @@
 #include "VertexArrayObject.h"
+#include "VertexBufferObject.h"
 
 namespace Draconian {
 
@@ -11,7 +12,7 @@ VertexArrayObject::VertexArrayObject()
 
 
 VertexArrayObject::~VertexArrayObject() {
-	for (int i = 0; i < m_Buffers.size(); i++)
+	for (uint i = 0; i < m_Buffers.size(); i++)
 		delete m_Buffers[i];
 
 	if (m_ID) {

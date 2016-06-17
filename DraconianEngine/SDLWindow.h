@@ -7,7 +7,7 @@ namespace Draconian {
 
 class SDLWindow : public Window {
 	public:
-		SDLWindow(std::string, int, int);
+		SDLWindow(std::string, uint, uint);
 		~SDLWindow();
 
 		bool create() override;
