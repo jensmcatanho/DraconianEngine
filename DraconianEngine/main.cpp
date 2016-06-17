@@ -1,10 +1,6 @@
 #define VERTEX_PATH "vertex.glsl"
 #define FRAG_PATH "frag.glsl"
 
-#include "Draconian.h"
-
-#include "FileManager.h"
-
 #include "IndexBufferObject.h"
 #include "VertexArrayObject.h"
 #include "VertexBufferObject.h"

@@ -1,12 +1,6 @@
 #pragma once
 
-#include <iostream>
-#include <sstream>
-#include <cassert>
-
-#include <GL/glew.h>
-
-#include "MainCore.h"
+#include "Prerequisites.h"
 
 namespace Draconian {
 
@@ -18,7 +12,7 @@ class Window {
 		Window(std::string, int, int);
 		virtual ~Window();
 
-		inline void changeState(RenderingState) const;
+		void changeState(RenderingState) const;
 		void clear();
 
 		// Framework-specific methods
@@ -41,9 +35,5 @@ class Window {
 		double m_MouseY;
 
 };
-
-inline void Window::changeState(RenderingState target) const {
-	MainCore::getSingleton().currentState = target;
-}
 
 }

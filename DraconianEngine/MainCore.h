@@ -1,13 +1,9 @@
 #pragma once
 
-#include <GL/glew.h>
+#include "Prerequisites.h"
 #include "Singleton.h"
 
 namespace Draconian {
-
-class Window;
-
-enum class RenderingState {RUNNING, EXIT};
 
 class MainCore : public Singleton<MainCore> {
 	friend class Window;
@@ -24,8 +20,12 @@ class MainCore : public Singleton<MainCore> {
 		static MainCore *getSingletonPtr();
 
 	private:
+		LogManager *m_LogManager;
 		Window *m_Window;
 		RenderingState currentState;
+
+	public:
+		FileManager *m_FileManager;
 };
 
 }

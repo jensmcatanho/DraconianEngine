@@ -1,5 +1,7 @@
 #include "Window.h"
 
+#include "MainCore.h"
+
 namespace Draconian {
 
 Window::Window(std::string title, int width, int height) : 
@@ -20,6 +22,10 @@ Window::~Window() {
 void Window::clear() {
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void Window::changeState(RenderingState target) const {
+	MainCore::getSingleton().currentState = target;
 }
 
 bool Window::isKeyPressed(unsigned int keyCode) {

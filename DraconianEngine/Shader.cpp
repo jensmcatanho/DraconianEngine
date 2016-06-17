@@ -1,5 +1,8 @@
 #include "Shader.h"
 
+#include "FileManager.h"
+#include "MainCore.h"
+
 namespace Draconian {
 
 Shader::Shader(const GLchar* path, GLenum type) :
@@ -17,9 +20,8 @@ Shader::~Shader() {
 
 void Shader::initialize() {
 	std::string shaderString;
-	FileManager fileManager;
 
-	shaderString = fileManager.getStringStream(m_Path).str();
+	shaderString = FileManager::getSingleton().getStringStream(m_Path).str();
 	m_Code = const_cast<const GLchar*>(shaderString.c_str());
 	m_CodeLength = shaderString.length();
 	m_ID = glCreateShader(m_Type);
