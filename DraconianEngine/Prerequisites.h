@@ -1,11 +1,13 @@
 #pragma once
 
+#include "Platform.h"
+
 namespace Draconian {
 
-#define DRACONIAN_MAJOR_VERSION 1
-#define DRACONIAN_MINOR_VERSION 0
-#define DRACONIAN_PATCH_VERSION 0
-#define DRACONIAN_VERSION (DRACONIAN_MAJOR_VERSION << 8) | (DRACONIAN_MINOR_VERSION << 4) | DRACONIAN_PATCH_VERSION
+#define DRACO_MAJOR_VERSION 1
+#define DRACO_MINOR_VERSION 0
+#define DRACO_PATCH_VERSION 0
+#define DRACO_VERSION (DRACO_MAJOR_VERSION << 8) | (DRACO_MINOR_VERSION << 4) | DRACO_PATCH_VERSION
 
 typedef unsigned char uchar;
 typedef unsigned short ushort;

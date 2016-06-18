@@ -97,6 +97,7 @@
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="GLFWWindow.cpp" />
     <ClCompile Include="IndexBufferObject.cpp" />
+    <ClCompile Include="LogManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainCore.cpp" />
     <ClCompile Include="Renderable2D.cpp" />
@@ -116,7 +117,10 @@
   <ItemGroup>
     <ClInclude Include="Batch2DRenderer.h" />
     <ClInclude Include="Buffer.h" />
-    <ClInclude Include="Draconian.h" />
+    <ClInclude Include="Factory.h" />
+    <ClInclude Include="LogManager.h" />
+    <ClInclude Include="Platform.h" />
+    <ClInclude Include="Prerequisites.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="GLFWWindow.h" />
     <ClInclude Include="IndexBufferObject.h" />
@@ -126,6 +130,7 @@
     <ClInclude Include="SDLWindow.h" />
     <ClInclude Include="Simple2DRenderer.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="StandardHeaders.h" />
     <ClInclude Include="StaticSprite.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
@@ -134,7 +139,6 @@
     <ClInclude Include="Timer.h" />
     <ClInclude Include="VertexArrayObject.h" />
     <ClInclude Include="VertexBufferObject.h" />
-    <ClInclude Include="Win32Window.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
