@@ -1,5 +1,9 @@
 #include "StaticSprite.h"
 
+#include "VertexArrayObject.h"
+#include "VertexBufferObject.h"
+#include "IndexBufferObject.h"
+
 namespace Draconian {
 
 StaticSprite::StaticSprite(float x, float y, float width, float height, const glm::vec4 &color, ShaderProgram &sp) :

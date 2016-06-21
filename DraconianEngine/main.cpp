@@ -17,27 +17,18 @@
 
 #include <time.h>
 
+#include "Shader.h"
+#include "ShaderProgram.h"
+
 #define BATCH_RENDERER 0
 
-#if 0
+#if 1
 int main(int argc, char *argv[]) {
+	Draconian::MainCore m;
 	Draconian::GLFWWindow w("OpenGL", 800, 600);
 
 	if (!w.create())
 		return -1;
-
-	glm::vec2 vertices[] = {
-		glm::vec2(-0.5f,  0.5f),
-		glm::vec2( 0.5f,  0.5f),
-		glm::vec2( 0.5f, -0.5f),
-		glm::vec2(-0.5f, -0.5f)
-
-	};
-
-	GLuint indices[] = {
-		0, 1, 2,
-		0, 2, 3
-	};
 
 	// Create and compile the vertex shader
 	Draconian::Shader vertex(VERTEX_PATH, GL_VERTEX_SHADER);
@@ -65,23 +56,25 @@ int main(int argc, char *argv[]) {
 	std::cout << "Shaders linked." << std::endl;
 
 #if BATCH_RENDERER
-	Draconian::Sprite sprite(-0.5, 0, 0.5, 0.5, glm::vec4(0, 0, 0, 0));
-	Draconian::Sprite sprite2(0.5, 0, 0.5, 0.5, glm::vec4(0, 0, 0, 0));
+	Draconian::Sprite sprite(-0.5, -0.5, 1.0, 1.0, glm::vec4(0, 0, 0, 0));
+	//Draconian::Sprite sprite2(0.5, 0, 0.5, 0.5, glm::vec4(0, 0, 0, 0));
 	Draconian::Batch2DRenderer renderer;
-	renderer.m_VBO->setLayout(;
+	//renderer.m_VBO->setLayout(;
 #else
 	Draconian::StaticSprite sprite(-0.5, -0.5, 1.0, 1.0, glm::vec4(0, 0, 0, 0), shaderProgram);
 	//Draconian::StaticSprite sprite2(0.5, 0, 0.5, 0.5, glm::vec4(0, 0, 0, 0), shaderProgram);
 	Draconian::Simple2DRenderer renderer;
 #endif
-
 	glUniform2f(glGetUniformLocation(shaderProgram.getID(), "light_pos"), 1.0f, 0.5f);
+
+	std::cout << "Position: " << glGetAttribLocation(shaderProgram.getID(), "position") << std::endl;
+	std::cout << "Color: " << glGetAttribLocation(shaderProgram.getID(), "color") << std::endl;
 
 	/*Draconian::Timer time;
 	float timer = 0.0f;
 	unsigned int frames = 0;
 	*/
-	while (!w.closed()) {
+	while (m.getCurrentState() != Draconian::RenderingState::EXIT) {
 		w.clear();
 
 #if BATCH_RENDERER
@@ -100,6 +93,9 @@ int main(int argc, char *argv[]) {
 		w.swapBuffers();
 		w.processInput();
 
+		float x, y;
+		w.getMousePosition(x, y);
+		glUniform2f(glGetUniformLocation(shaderProgram.getID(), "light_pos"), (float)(x * 16.0f / 800.0f), (float)(9.0f - y * 9.0f / 600.0f));
 		/*frames++;
 		if (time.elapsed() - timer > 1.0f) {
 			timer += 1.0f;
@@ -111,10 +107,11 @@ int main(int argc, char *argv[]) {
 	return EXIT_SUCCESS;
 }
 #endif
-
+#if 0
 int main(int argc, char *argv[]) {
 	Draconian::MainCore m;
 	m.mainLoop();
 
 	return 0;
 }
+#endif

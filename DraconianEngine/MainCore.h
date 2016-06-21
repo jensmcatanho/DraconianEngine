@@ -16,6 +16,8 @@ class MainCore : public Singleton<MainCore> {
 		void mainLoop();
 		void startRendering();
 
+		inline RenderingState getCurrentState() const { return currentState; }
+
 		static MainCore &getSingleton();
 		static MainCore *getSingletonPtr();
 

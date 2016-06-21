@@ -28,11 +28,10 @@ void VertexArrayObject::addBuffer(VertexBufferObject *buffer, GLuint index) {
 
 	glEnableVertexAttribArray(index);
 	glVertexAttribPointer(index, buffer->getComponentCount(), GL_FLOAT, GL_FALSE, 0, 0);
+	m_Buffers.push_back(buffer);
 
-#if 0
 	unbind();
 	buffer->unbind();
-#endif
 }
 
 }

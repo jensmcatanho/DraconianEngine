@@ -2,7 +2,7 @@
 
 #include "Prerequisites.h"
 
-namespace Draconian{
+namespace Draconian {
 
 class Shader {
 	public:

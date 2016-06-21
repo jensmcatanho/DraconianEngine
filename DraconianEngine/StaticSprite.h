@@ -1,7 +1,6 @@
 #pragma once
 
-#include "ShaderProgram.h"
-#include "Sprite.h"
+#include "Renderable2D.h"
 
 namespace Draconian {
 

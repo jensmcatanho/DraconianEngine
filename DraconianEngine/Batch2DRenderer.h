@@ -1,18 +1,17 @@
 #pragma once
 
-#include <glm/glm.hpp>
-
+#include "Prerequisites.h"
 #include "Renderer2D.h"
-
-const unsigned int MAX_SPRITES = 10000;
-const unsigned int VERTEX_SIZE = sizeof(Draconian::VertexData);
-const unsigned int SPRITE_SIZE = VERTEX_SIZE * 4;
-const unsigned int BUFFER_SIZE = MAX_SPRITES * SPRITE_SIZE;
-const unsigned int INDICES_SIZE = MAX_SPRITES * 6;
 
 namespace Draconian {
 
-class Batch2DRenderer : Renderer2D {
+#define MAX_SPRITES    10000
+#define VERTEX_SIZE    sizeof(VertexData)
+#define SPRITE_SIZE    VERTEX_SIZE * 4
+#define BUFFER_SIZE    MAX_SPRITES * SPRITE_SIZE
+#define INDICES_SIZE   MAX_SPRITES * 6
+
+class Batch2DRenderer : public Renderer2D {
 	public:
 		Batch2DRenderer();
 		~Batch2DRenderer();
@@ -22,7 +21,7 @@ class Batch2DRenderer : Renderer2D {
 		void submit(const Renderable2D *) override;
 		void flush() override;
 		void initialize();
-
+		
 	public:
 		VertexArrayObject *m_VAO;
 		VertexBufferObject *m_VBO;

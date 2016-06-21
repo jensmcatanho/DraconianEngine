@@ -9,17 +9,19 @@ namespace Draconian {
 #define DRACO_PATCH_VERSION 0
 #define DRACO_VERSION (DRACO_MAJOR_VERSION << 8) | (DRACO_MINOR_VERSION << 4) | DRACO_PATCH_VERSION
 
-typedef unsigned char uchar;
-typedef unsigned short ushort;
-typedef unsigned int uint;
-typedef unsigned long ulong;
-
 // Forward declarations
 class FileManager;
+class IndexBufferObject;
 class LogManager;
+class Renderable2D;
 enum class RenderingState { EXIT, RUNNING };
+class ShaderProgram;
+class Sprite;
+class StaticSprite;
 class Timer;
+class VertexArrayObject;
 class VertexBufferObject;
+struct VertexData;
 class Window;
 
 }

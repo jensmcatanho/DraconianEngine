@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Graphics\OpenGL\Buffers">
       <UniqueIdentifier>{7ab7610d-0f06-45f3-9039-4016062559c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Graphics\OpenGL\Layers">
+      <UniqueIdentifier>{baa43511-6599-4778-b90c-463eef6e3658}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\OpenGL\Layers">
+      <UniqueIdentifier>{44f84bdf-be20-49a5-acca-9a79f3a5753b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -107,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="VertexBufferObject.cpp">
       <Filter>Source Files\Graphics\OpenGL\Buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32Timer.cpp">
+      <Filter>Source Files\Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +192,9 @@
       <Filter>Header Files\Main</Filter>
     </ClInclude>
     <ClInclude Include="Platform.h">
+      <Filter>Header Files\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32Timer.h">
       <Filter>Header Files\Main</Filter>
     </ClInclude>
   </ItemGroup>

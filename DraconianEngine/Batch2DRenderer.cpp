@@ -1,5 +1,9 @@
 #include "Batch2DRenderer.h"
 
+#include "IndexBufferObject.h"
+#include "Renderable2D.h"
+#include "VertexArrayObject.h"
+#include "VertexBufferObject.h"
 
 namespace Draconian {
 
@@ -28,7 +32,7 @@ void Batch2DRenderer::initialize() {
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, VERTEX_SIZE, (const GLvoid *)(3 * sizeof(GLfloat)));
 
 	for (int i = 0, offset = 0; i < INDICES_SIZE; i += 6, offset += 4) {
-		indices[i] = offset + 0;
+		indices[  i  ] = offset + 0;
 		indices[i + 1] = offset + 1;
 		indices[i + 2] = offset + 2;
 
@@ -38,6 +42,8 @@ void Batch2DRenderer::initialize() {
 	}
 
 	m_IBO = new IndexBufferObject(indices, sizeof(indices), INDICES_SIZE, GL_STATIC_DRAW);
+
+	m_VAO->unbind();
 }
 
 void Batch2DRenderer::submit(const Renderable2D *renderable) {

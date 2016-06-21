@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Windows.h>
+#include "Prerequisites.h"
 
 namespace Draconian {
 
@@ -10,11 +10,10 @@ class Timer {
 		~Timer();
 
 		void reset();
-		float elapsed();
-
-	private:
-		LARGE_INTEGER m_Start;
-		double m_Frequency;
+		virtual unsigned long getMilliseconds() = 0;
+		virtual unsigned long getMillisecondsCPU() = 0;
+		virtual unsigned long getMicroseconds() = 0;
+		virtual unsigned long getMicrosecondsCPU() = 0;
 };
 
 }

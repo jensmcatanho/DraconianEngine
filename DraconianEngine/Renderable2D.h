@@ -1,20 +1,12 @@
 #pragma once
 
-#include <GL/glew.h>
-
-#include <glm/glm.hpp>
-
-#include "ShaderProgram.h"
-#include "IndexBufferObject.h"
-#include "VertexArrayObject.h"
-#include "VertexBufferObject.h"
+#include "Prerequisites.h"
 
 namespace Draconian {
 
 struct VertexData {
 	glm::vec3 vertex;
 	glm::vec4 color;
-
 };
 
 class Renderable2D {

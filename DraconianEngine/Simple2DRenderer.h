@@ -1,9 +1,6 @@
 #pragma once
 
-#include <deque>
-
 #include "Renderer2D.h"
-#include "StaticSprite.h"
 
 namespace Draconian {
 

@@ -1,20 +1,25 @@
 #pragma once
 
-// NOTE: FileManager will be a Singleton in the future but, for testing purposes, it's not a Singleton yet.
-
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <vector>
+#include "Prerequisites.h"
+#include "Singleton.h"
+#include <FreeImage.h>
 
 namespace Draconian {
 
-class FileManager {
+class FileManager : public Singleton<FileManager> {
 	public:
 		FileManager();
 		~FileManager();
 
 		std::stringstream getStringStream(std::string) const;
+		BYTE *loadImage(const char *, size_t *, size_t *) const;
+
+		static FileManager &getSingleton();
+		static FileManager *getSingletonPtr();
+
+	private:
+		std::ifstream m_InputFileStream;
+		std::ofstream m_OutputFileStream;
 };
 
 }

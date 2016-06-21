@@ -41,8 +41,8 @@ bool Window::isMouseButtonPressed(uint keyCode) {
 }
 
 void Window::getMousePosition(float &x, float &y) {
-	m_MouseX = x;
-	m_MouseY = y;
+	x = m_MouseX;
+	y = m_MouseY;
 }
 
 }

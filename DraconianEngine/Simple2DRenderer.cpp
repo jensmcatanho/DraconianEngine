@@ -1,5 +1,10 @@
 #include "Simple2DRenderer.h"
 
+#include "IndexBufferObject.h"
+#include "StaticSprite.h"
+#include "VertexArrayObject.h"
+#include "VertexBufferObject.h"
+
 namespace Draconian {
 
 void Simple2DRenderer::submit(const Renderable2D *renderable) {
@@ -12,12 +17,11 @@ void Simple2DRenderer::flush() {
 	
 		sprite->getVAO()->bind();
 		sprite->getIBO()->bind();
+		
 		glDrawElements(GL_TRIANGLES, sprite->getIBO()->getCount(), GL_UNSIGNED_INT, nullptr);
 
-#if 0
-		renderable->getIBO()->unbind();
-		renderable=>getVAO()->unbind();
-#endif
+		sprite->getIBO()->unbind();
+		sprite->getVAO()->unbind();
 
 		m_RenderQueue.pop_front();
 	}
