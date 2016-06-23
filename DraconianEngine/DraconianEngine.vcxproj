@@ -55,7 +55,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;GLEW_STATIC;_DEBUG;_CONSOLE;_LIB;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;GLEW_STATIC;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>false</SDLCheck>
       <AdditionalIncludeDirectories>C:\Users\Jean\Dropbox\OpenGL\glfw\include;C:\Users\Jean\Dropbox\OpenGL\glew\include;C:\Users\Jean\Dropbox\OpenGL\glm;C:\Users\Jean\Dropbox\OpenGL\FreeImage\Dist\x32\include;C:\Users\Jean\Dropbox\OpenGL\SDL2-2.0.4\include</AdditionalIncludeDirectories>
     </ClCompile>
@@ -97,6 +97,7 @@
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="GLFWWindow.cpp" />
     <ClCompile Include="IndexBufferObject.cpp" />
+    <ClCompile Include="Layer.cpp" />
     <ClCompile Include="LogManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainCore.cpp" />
@@ -119,6 +120,7 @@
     <ClInclude Include="Batch2DRenderer.h" />
     <ClInclude Include="Buffer.h" />
     <ClInclude Include="Factory.h" />
+    <ClInclude Include="Layer.h" />
     <ClInclude Include="LogManager.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Prerequisites.h" />

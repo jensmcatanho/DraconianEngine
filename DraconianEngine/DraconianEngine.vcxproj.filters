@@ -117,6 +117,9 @@
     <ClCompile Include="Win32Timer.cpp">
       <Filter>Source Files\Main</Filter>
     </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Source Files\Graphics\OpenGL\Layers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -196,6 +199,9 @@
     </ClInclude>
     <ClInclude Include="Win32Timer.h">
       <Filter>Header Files\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Header Files\Graphics\OpenGL\Layers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

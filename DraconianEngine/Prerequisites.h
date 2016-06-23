@@ -14,6 +14,7 @@ class FileManager;
 class IndexBufferObject;
 class LogManager;
 class Renderable2D;
+class Renderer2D;
 enum class RenderingState { EXIT, RUNNING };
 class ShaderProgram;
 class Sprite;

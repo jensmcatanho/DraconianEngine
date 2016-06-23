@@ -9,11 +9,14 @@ class Timer {
 		Timer();
 		~Timer();
 
-		void reset();
-		virtual unsigned long getMilliseconds() = 0;
-		virtual unsigned long getMillisecondsCPU() = 0;
-		virtual unsigned long getMicroseconds() = 0;
-		virtual unsigned long getMicrosecondsCPU() = 0;
+		virtual void reset() = 0;
+		virtual ulong getMilliseconds() = 0;
+		virtual ulong getMillisecondsCPU() = 0;
+		virtual ulong getMicroseconds() = 0;
+		virtual ulong getMicrosecondsCPU() = 0;
+
+	protected:
+		virtual ulong getTime() = 0;
 };
 
 }

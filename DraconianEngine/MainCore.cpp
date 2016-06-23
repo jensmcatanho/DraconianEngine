@@ -6,6 +6,7 @@
 #include "SDLWindow.h"
 #include "Shader.h"
 #include "ShaderProgram.h"
+#include "Win32Timer.h"
 
 namespace Draconian {
 
@@ -21,15 +22,18 @@ MainCore::MainCore() :
 
 
 MainCore::~MainCore() {
-	delete m_Window;
 	delete m_FileManager;
+	delete m_Timer;
+	delete m_Window;
 
 }
 
 void MainCore::initSystems() {
 	m_Window = new GLFWWindow("OpenGL", 800, 600);
 	//m_Window = new SDLWindow("OpenGL", 800, 600);
+	m_LogManager = new LogManager();
 	m_FileManager = new FileManager();
+	m_Timer = new Win32Timer();
 	
 	if (!m_Window->create()) {
 		// Later will print in the log system

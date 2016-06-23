@@ -22,12 +22,13 @@ class MainCore : public Singleton<MainCore> {
 		static MainCore *getSingletonPtr();
 
 	private:
-		LogManager *m_LogManager;
-		Window *m_Window;
 		RenderingState currentState;
 
-	public:
+		// Singletons
 		FileManager *m_FileManager;
+		LogManager *m_LogManager;
+		Timer *m_Timer;
+		Window *m_Window;
 };
 
 }

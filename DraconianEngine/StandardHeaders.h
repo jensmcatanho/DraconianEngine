@@ -17,6 +17,7 @@
 #include <sstream>
 
 // Other
+#include <algorithm>
 #include <exception>
 
 // More to come...
