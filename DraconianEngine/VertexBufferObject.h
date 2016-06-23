@@ -12,8 +12,8 @@ class VertexBufferObject : public Buffer {
 		VertexBufferObject(glm::vec4 *, GLsizei, GLuint, GLenum);
 		~VertexBufferObject();
 
-		inline void bind() const override;
-		inline void unbind() const override;
+		void bind() override;
+		void unbind() override;
 		void setLayout(GLuint, GLint, GLenum, GLsizei);
 
 		inline GLuint getComponentCount() const;
@@ -22,14 +22,6 @@ class VertexBufferObject : public Buffer {
 		GLuint m_ComponentCount;
 
 };
-
-inline void VertexBufferObject::bind() const {
-	glBindBuffer(GL_VERTEX_ARRAY, m_ID);
-}
-
-inline void VertexBufferObject::unbind() const {
-	glBindBuffer(GL_VERTEX_ARRAY, 0);
-}
 
 inline GLuint VertexBufferObject::getComponentCount() const {
 	return m_ComponentCount;

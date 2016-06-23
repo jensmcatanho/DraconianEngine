@@ -23,7 +23,7 @@ MainCore::MainCore() :
 
 MainCore::~MainCore() {
 	delete m_FileManager;
-	delete m_Timer;
+	//delete m_Timer;
 	delete m_Window;
 
 }

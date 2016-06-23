@@ -9,11 +9,12 @@ class Buffer {
 		Buffer();
 		virtual ~Buffer();
 
-		virtual inline void bind() const = 0;
-		virtual inline void unbind() const = 0;
+		virtual void bind() = 0;
+		virtual void unbind() = 0;
 
 	protected:
 		GLuint m_ID;
+		GLboolean m_IsBound;
 };
 
 }

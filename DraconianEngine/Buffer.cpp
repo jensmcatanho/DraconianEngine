@@ -4,6 +4,7 @@ namespace Draconian {
 
 Buffer::Buffer() :
 	m_ID(0) {
+
 	glGenBuffers(1, &m_ID);
 
 }

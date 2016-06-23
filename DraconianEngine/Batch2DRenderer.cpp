@@ -46,7 +46,7 @@ void Batch2DRenderer::initialize() {
 	m_VAO->unbind();
 }
 
-void Batch2DRenderer::submit(const Renderable2D *renderable) {
+void Batch2DRenderer::submit(Renderable2D *renderable) {
 	const glm::vec3 &position = renderable->getPosition();
 	const glm::vec2 &size = renderable->getSize();
 	const glm::vec4 &color = renderable->getColor();

@@ -6,11 +6,11 @@ namespace Draconian {
 
 class Simple2DRenderer : public Renderer2D {
 	public:
-		void submit(const Renderable2D *) override;
+		void submit(Renderable2D *) override;
 		void flush() override;
 
 	private:
-		std::deque<const StaticSprite *> m_RenderQueue;
+		std::deque<StaticSprite *> m_RenderQueue;
 };
 
 }

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Prerequisites.h"
-#include "VertexBufferObject.h"
 
 namespace Draconian {
 
@@ -10,28 +9,18 @@ class VertexArrayObject {
 		VertexArrayObject();
 		~VertexArrayObject();
 
-		inline void bind() const;
-		inline void unbind() const;
+		void bind();
+		void unbind();
 
 		void addBuffer(VertexBufferObject *, GLuint);
 
 	private:
 		GLuint m_ID;
-		std::vector<VertexBufferObject *> m_Buffers;
+
+		typedef std::vector<VertexBufferObject *> VBOList;
+		VBOList m_Buffers;
+
+		GLboolean m_IsBound;
 };
-
-inline void VertexArrayObject::bind() const {
-	for (VertexBufferObject *vbo : m_Buffers)
-		vbo->bind();
-
-	glBindVertexArray(m_ID);
-}
-
-inline void VertexArrayObject::unbind() const {
-	for (VertexBufferObject *vbo : m_Buffers)
-		vbo->unbind();
-
-	glBindVertexArray(0);
-}
 
 }

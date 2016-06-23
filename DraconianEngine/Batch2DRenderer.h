@@ -18,7 +18,7 @@ class Batch2DRenderer : public Renderer2D {
 
 		void begin();
 		void end();
-		void submit(const Renderable2D *) override;
+		void submit(Renderable2D *) override;
 		void flush() override;
 		void initialize();
 		

@@ -3,57 +3,46 @@
 namespace Draconian {
 
 VertexBufferObject::VertexBufferObject(GLfloat *data, GLsizei dataSize, GLuint componentCount, GLenum usage) :
-	Buffer(),
 	m_ComponentCount(componentCount) {
 
-	glBindBuffer(GL_ARRAY_BUFFER, m_ID);
+	bind();
 	glBufferData(GL_ARRAY_BUFFER, dataSize, data, usage);
-#if 0
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-#endif
 }
 
 VertexBufferObject::VertexBufferObject(glm::vec2 *data, GLsizei dataSize, GLuint componentCount, GLenum usage) :
-	Buffer(),
 	m_ComponentCount(componentCount) {
 
-	glGenBuffers(1, &m_ID);
-	glBindBuffer(GL_ARRAY_BUFFER, m_ID);
+	bind();
 	glBufferData(GL_ARRAY_BUFFER, dataSize, data, usage);
-#if 0
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-#endif
 }
 
 VertexBufferObject::VertexBufferObject(glm::vec3 *data, GLsizei dataSize, GLuint componentCount, GLenum usage) :
-	Buffer(),
 	m_ComponentCount(componentCount) {
 
-	glGenBuffers(1, &m_ID);
-	glBindBuffer(GL_ARRAY_BUFFER, m_ID);
+	bind();
 	glBufferData(GL_ARRAY_BUFFER, dataSize, data, usage);
-#if 0
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-#endif
 }
 
 VertexBufferObject::VertexBufferObject(glm::vec4 *data, GLsizei dataSize, GLuint componentCount, GLenum usage) :
-	Buffer(),
 	m_ComponentCount(componentCount) {
 
-	glGenBuffers(1, &m_ID);
-	glBindBuffer(GL_ARRAY_BUFFER, m_ID);
+	bind();
 	glBufferData(GL_ARRAY_BUFFER, dataSize, data, usage);
-#if 0
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-#endif
 }
 
 VertexBufferObject::~VertexBufferObject() {
-#if 0
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-#endif
-	glDeleteBuffers(1, &m_ID);
+
+}
+
+
+void VertexBufferObject::bind() {
+	m_IsBound = GL_TRUE;
+	glBindBuffer(GL_VERTEX_ARRAY, m_ID);
+}
+
+void VertexBufferObject::unbind() {
+	m_IsBound = GL_FALSE;
+	glBindBuffer(GL_VERTEX_ARRAY, 0);
 }
 
 void VertexBufferObject::setLayout(GLuint index, GLint size, GLenum type, GLsizei stride) {

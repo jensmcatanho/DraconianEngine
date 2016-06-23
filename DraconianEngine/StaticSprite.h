@@ -9,8 +9,8 @@ class StaticSprite : public Renderable2D {
 		StaticSprite(float, float, float, float, const glm::vec4 &, ShaderProgram &);
 		~StaticSprite();
 
-		inline const VertexArrayObject *getVAO() const;
-		inline const IndexBufferObject *getIBO() const;
+		inline VertexArrayObject *getVAO() const;
+		inline IndexBufferObject *getIBO() const;
 		inline ShaderProgram &getShaderProgram() const;
 
 	private:
@@ -19,11 +19,11 @@ class StaticSprite : public Renderable2D {
 		ShaderProgram &m_ShaderProgram;
 };
 
-inline const VertexArrayObject *StaticSprite::getVAO() const {
+inline VertexArrayObject *StaticSprite::getVAO() const {
 	return m_VAO;
 }
 
-inline const IndexBufferObject *StaticSprite::getIBO() const {
+inline IndexBufferObject *StaticSprite::getIBO() const {
 	return m_IBO;
 }
 

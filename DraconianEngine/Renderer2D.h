@@ -10,7 +10,7 @@ class Renderer2D {
 		virtual ~Renderer2D();
 
 	protected:
-		virtual void submit(const Renderable2D *) = 0;
+		virtual void submit(Renderable2D *) = 0;
 		virtual void flush() = 0;
 };
 

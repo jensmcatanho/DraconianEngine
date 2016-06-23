@@ -24,7 +24,7 @@
 
 #define BATCH_RENDERER 0
 
-#if 0
+#if 1
 int main(int argc, char *argv[]) {
 	Draconian::MainCore m;
 	Draconian::GLFWWindow w("OpenGL", 800, 600);
@@ -110,7 +110,7 @@ int main(int argc, char *argv[]) {
 }
 #endif
 
-
+#if 0
 using namespace std;
 
 const GLchar* vertexSource =
@@ -131,7 +131,6 @@ const GLchar* fragmentSource =
 "   outColor = vec4(Color, 1.0);"
 "}";
 
-#if 1
 int main(int argc, char *argv[]) {
 
 	// GLFW initialization

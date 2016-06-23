@@ -17,9 +17,21 @@ VertexArrayObject::~VertexArrayObject() {
 
 	if (m_ID) {
 		glDeleteVertexArrays(1, &m_ID);
-		m_ID = 0;
 
 	}
+}
+
+void VertexArrayObject::bind() {
+	m_IsBound = GL_TRUE;
+	glBindVertexArray(m_ID);
+}
+
+void VertexArrayObject::unbind() {
+	m_IsBound = GL_FALSE;
+	glBindVertexArray(0);
+
+	for (VertexBufferObject *vbo : m_Buffers)
+		vbo->unbind();
 }
 
 void VertexArrayObject::addBuffer(VertexBufferObject *buffer, GLuint index) {
