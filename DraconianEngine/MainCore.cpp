@@ -33,7 +33,7 @@ void MainCore::initSystems() {
 	//m_Window = new SDLWindow("OpenGL", 800, 600);
 	m_LogManager = new LogManager();
 	m_FileManager = new FileManager();
-	m_Timer = new Win32Timer();
+	//m_Timer = new Win32Timer();
 	
 	if (!m_Window->create()) {
 		// Later will print in the log system

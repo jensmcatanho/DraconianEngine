@@ -1,5 +1,6 @@
 #include "Win32Timer.h"
 
+#if 0
 namespace Draconian {
 
 Win32Timer::Win32Timer() :
@@ -126,3 +127,4 @@ ulong Win32Timer::getMicrosecondsCPU() {
 }
 
 }
+#endif

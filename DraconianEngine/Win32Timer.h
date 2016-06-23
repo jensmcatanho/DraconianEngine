@@ -10,6 +10,7 @@
 #endif
 #include <Windows.h>
 
+#if 0
 namespace Draconian {
 
 class Win32Timer : public Timer {
@@ -40,3 +41,4 @@ class Win32Timer : public Timer {
 };
 
 }
+#endif
